@@ -4,6 +4,8 @@ pluginManagement {
         maven {
             url "https://maven.google.com"
         }
+        maven { url 'https://jitpack.io' }
+
         google()
         mavenCentral()
     }
@@ -15,9 +17,12 @@ dependencyResolutionManagement {
         maven {
             url "https://maven.google.com"
         }
+        maven { url 'https://jitpack.io' }
+
         google()
         mavenCentral()
     }
 }
+
 rootProject.name = "NguoiDung"
 include ':app'
