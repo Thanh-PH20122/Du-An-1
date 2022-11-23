@@ -17,6 +17,6 @@ public class fragmenCheQue extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_fragmen_che_que, container, false);
+        return inflater.inflate(R.layout.fragmen_hoa_don, container, false);
     }
 }
