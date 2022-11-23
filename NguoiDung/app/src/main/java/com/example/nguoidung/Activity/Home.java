@@ -19,8 +19,6 @@ import com.example.nguoidung.Fragment.fragmentHome;
 import com.example.nguoidung.Fragment.fragmentUser;
 import com.example.nguoidung.R;
 
-import java.util.List;
-
 public class Home extends AppCompatActivity {
     FragmentTransaction transaction;
     AHBottomNavigation bottomNavigation;
@@ -29,7 +27,7 @@ public class Home extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_trang_chu);
         bottomNavigation = findViewById(R.id.bottom_navigation);
 
         String[] display = new String[]{
