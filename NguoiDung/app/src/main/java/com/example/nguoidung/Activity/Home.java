@@ -13,10 +13,10 @@ import android.view.MenuItem;
 
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
-import com.example.nguoidung.Fragment.fragmenCheQue;
-import com.example.nguoidung.Fragment.fragmentFavorite;
-import com.example.nguoidung.Fragment.fragmentHome;
-import com.example.nguoidung.Fragment.fragmentUser;
+import com.example.nguoidung.Fragment.fragmenHoaDon;
+import com.example.nguoidung.Fragment.fragmentYeuThich;
+import com.example.nguoidung.Fragment.fragmentTrangChu;
+import com.example.nguoidung.Fragment.fragmentNguoiDung;
 import com.example.nguoidung.R;
 
 public class Home extends AppCompatActivity {
@@ -55,7 +55,7 @@ public class Home extends AppCompatActivity {
 //        bottomNavigation.setColored(true);
 
         transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.activity_home_frame_layout, new fragmentHome());
+        transaction.add(R.id.activity_home_frame_layout, new fragmentTrangChu());
         transaction.addToBackStack(null);
         transaction.commit();
 
@@ -65,21 +65,21 @@ public class Home extends AppCompatActivity {
                 if (position == 0) {
                     initToolBar(display[position]);
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.activity_home_frame_layout, new fragmentHome());
+                    transaction.add(R.id.activity_home_frame_layout, new fragmentTrangChu());
                     transaction.addToBackStack(null);
                     transaction.commit();
 
                 } else if (position == 1) {
                     initToolBar(display[position]);
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.activity_home_frame_layout, new fragmentFavorite());
+                    transaction.add(R.id.activity_home_frame_layout, new fragmentYeuThich());
                     transaction.addToBackStack(null);
                     transaction.commit();
 
                 } else if (position == 2) {
                     initToolBar(display[position]);
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.activity_home_frame_layout, new fragmenCheQue());
+                    transaction.add(R.id.activity_home_frame_layout, new fragmenHoaDon());
                     transaction.addToBackStack(null);
                     transaction.commit();
 
@@ -87,7 +87,7 @@ public class Home extends AppCompatActivity {
                 } else if (position == 3) {
                     initToolBar(display[position]);
                     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                    transaction.add(R.id.activity_home_frame_layout, new fragmentUser());
+                    transaction.add(R.id.activity_home_frame_layout, new fragmentNguoiDung());
                     transaction.addToBackStack(null);
                     transaction.commit();
 
@@ -115,13 +115,13 @@ public class Home extends AppCompatActivity {
             case android.R.id.home:
                 onBackPressed();
                 Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.activity_home_frame_layout);
-                if (fragment.toString().indexOf("Home") > 0) {
+                if (fragment.toString().indexOf("TrangChu") > 0) {
                     bottomNavigation.setCurrentItem(0);
-                } else if (fragment.toString().indexOf("Favorite") > 0) {
+                } else if (fragment.toString().indexOf("YeuThich") > 0) {
                     bottomNavigation.setCurrentItem(1);
-                } else if (fragment.toString().indexOf("CheQue") > 0) {
+                } else if (fragment.toString().indexOf("HoaDon") > 0) {
                     bottomNavigation.setCurrentItem(2);
-                } else if (fragment.toString().indexOf("User") > 0) {
+                } else if (fragment.toString().indexOf("NguoiDung") > 0) {
                     bottomNavigation.setCurrentItem(3);
                 }else{
                     onBackPressed();

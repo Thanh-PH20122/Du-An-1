@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewPropertyAnimatorCompat;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,10 +25,14 @@ public class SignIn extends AppCompatActivity {
     public static final int CHECKBOK_DELAY = 600;
     public static final int TEXTVIEW_DELAY = 600;
 
+    Context context;
+    Button btnTroLai;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_ky);
+        btnTroLai = findViewById(R.id.SignIn_btn_troLai);
+        context = this;
         ///////////////////////
         ImageView logoImageView = findViewById(R.id.SignIn_logo);
         ViewGroup container = findViewById(R.id.SignIn);
@@ -61,5 +67,12 @@ public class SignIn extends AppCompatActivity {
             }
             viewAnimator.setInterpolator(new DecelerateInterpolator()).start();
         }
+        //////////////////////
+        btnTroLai.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context,Login.class));
+            }
+        });
     }
 }

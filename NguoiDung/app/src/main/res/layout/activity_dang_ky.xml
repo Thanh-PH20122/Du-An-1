@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.SignIn">
+    tools:context=".Activity.SignIn"
+    android:background="@color/white">
 
     <View
         android:id="@+id/view3"
@@ -21,39 +22,39 @@
         app:srcCompat="@drawable/logo" />
 
     <EditText
-        android:id="@+id/SignIn_tenTK"
+        android:id="@+id/SignIn_tenNguoiDung"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Tên tài khoản"
+        android:hint="Tên người dùng"
         android:minHeight="48dp"
         android:scaleX="0"
         android:scaleY="0" />
 
     <EditText
-        android:id="@+id/SignIn_matKhauCu"
+        android:id="@+id/SignIn_taiKhoan"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:ems="10"
-        android:hint="Mật khẩu cũ"
-        android:inputType="textPassword"
+        android:hint="Tài khoản"
+        android:inputType="text"
         android:minHeight="48dp"
         android:scaleX="0"
         android:scaleY="0"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
-        android:id="@+id/SignIn_matKhauMoi"
+        android:id="@+id/SignIn_matKhau"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Mật khẩu mới"
+        android:hint="Mật khẩu"
         android:inputType="textPassword"
         android:minHeight="48dp"
         android:scaleX="0"
@@ -65,10 +66,22 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/bo_goc_custom1"
         android:scaleX="0"
         android:scaleY="0"
         android:text="Đăng ký"
         android:textColor="@color/white" />
+
+    <Button
+        android:id="@+id/SignIn_btn_troLai"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bo_goc_custom2"
+        android:scaleX="0"
+        android:scaleY="0"
+        android:text="Trở lại"
+        android:textColor="@color/black" />
 </LinearLayout>

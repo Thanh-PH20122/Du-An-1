@@ -10,13 +10,11 @@ import android.view.ViewGroup;
 
 import com.example.nguoidung.R;
 
-
-public class fragmenCheQue extends Fragment {
-
+public class fragmentDoiMatKhau extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragmen_hoa_don, container, false);
+        return inflater.inflate(R.layout.fragment_doi_mat_khau, container, false);
     }
 }

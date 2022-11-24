@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Fragment.fragmentFavorite">
+    tools:context=".Fragment.fragmentYeuThich"
+    android:background="@color/white">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragment_favorite_rcv"
         android:padding="10dp"

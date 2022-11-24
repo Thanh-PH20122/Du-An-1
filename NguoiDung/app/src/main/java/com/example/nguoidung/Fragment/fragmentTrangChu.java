@@ -16,7 +16,7 @@ import com.example.nguoidung.R;
 import java.util.ArrayList;
 
 
-public class fragmentHome extends Fragment {
+public class fragmentTrangChu extends Fragment {
     ImageSlider imageSlider;
     View view;
     @Override
