@@ -20,7 +20,7 @@
             <ImageView
                 android:padding="5dp"
                 android:layout_gravity="center"
-                android:layout_width="130dp"
+                android:layout_width="110dp"
                 android:layout_height="130dp"
                 android:src="@drawable/anh_hoa_don"/>
 

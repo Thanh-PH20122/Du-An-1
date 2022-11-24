@@ -30,7 +30,7 @@
         android:inputType="text"
         android:scaleX="0"
         android:scaleY="0"
-        tools:ignore="Autofill" />
+        tools:ignore="Autofill"/>
 
     <EditText
         android:id="@+id/login_edit_password"
