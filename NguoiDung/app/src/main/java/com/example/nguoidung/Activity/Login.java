@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.ViewPropertyAnimatorCompat;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +17,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.nguoidung.Dao.ThanhVienDao;
+import com.example.nguoidung.Object.ThanhVien;
 import com.example.nguoidung.R;
+import com.example.nguoidung.SQLsever.SQLsever;
+
+import java.sql.Connection;
+import java.util.List;
 
 public class Login extends AppCompatActivity {
     public static final int STARTUP_DELAY = 300;
@@ -27,17 +35,25 @@ public class Login extends AppCompatActivity {
     public static final int TEXTVIEW_DELAY = 600;
 
     Button btnDangNhap,btnDangKy;
+    EditText edtTenTK, edtMatKhau;
+    CheckBox checkBox;
     Intent intent;
+    Context context = this;
+    ThanhVienDao dao = new ThanhVienDao();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
 
-
-
         ///////////////////////
+        edtTenTK = findViewById(R.id.login_edit_name);
+        edtMatKhau = findViewById(R.id.login_edit_password);
+        checkBox = findViewById(R.id.login_checkBok);
+        btnDangNhap = findViewById(R.id.login_btn_login);
+        btnDangKy = findViewById(R.id.login_btn_signUp);
         ImageView logoImageView = findViewById(R.id.logo);
         ViewGroup container = findViewById(R.id.container);
+
 
         //Code for app logo animation
         ViewCompat.animate(logoImageView)
@@ -79,8 +95,21 @@ public class Login extends AppCompatActivity {
             }
             viewAnimator.setInterpolator(new DecelerateInterpolator()).start();
         }
-
-        btnDangKy = findViewById(R.id.login_btn_signUp);
+        btnDangNhap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String userName = edtTenTK.getText().toString();
+                String passWord = edtMatKhau.getText().toString();
+                Boolean checked = checkBox.isChecked();
+                List<ThanhVien> ls = dao.getAll();
+                for (ThanhVien tv: ls) {
+                    if (userName.equals(tv.getUserName()) && passWord.equals(tv.getPassWord())){
+                        rememberUser(userName,passWord,checked);
+                        startActivity(new Intent(context,Home.class));
+                    }
+                }
+            }
+        });
         btnDangKy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,5 +117,41 @@ public class Login extends AppCompatActivity {
             }
         });
 
+    }
+    public void login(){
+        Intent intent = getIntent();
+        if (intent.getExtras() != null){
+            String userName = intent.getStringExtra("UserName");
+            String passWord = intent.getStringExtra("PassWord");
+            edtTenTK.setText(userName);
+            edtMatKhau.setText(passWord);
+        }
+    }
+    public void rememberUser(String u, String p, Boolean b){
+        SharedPreferences pref = getSharedPreferences("USER_FILE",MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        if(!b){
+            editor.clear();
+        }else{
+            editor.putString("USERNAME",u);
+            editor.putString("PASSWORD",p);
+            editor.putBoolean("REMEMBER",b);
+        }
+        editor.commit();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        SharedPreferences pref = getSharedPreferences("USER_FILE",MODE_PRIVATE);
+        String muser = pref.getString("USERNAME", String.valueOf(false));
+        String mpass = pref.getString("PASSWORD", String.valueOf(false));
+        Boolean mb = pref.getBoolean("REMEMBER", false);
+        if (mb){
+            edtTenTK.setText(muser);
+            edtMatKhau.setText(mpass);
+            checkBox.setChecked(mb);
+        }
+        login();
     }
 }
