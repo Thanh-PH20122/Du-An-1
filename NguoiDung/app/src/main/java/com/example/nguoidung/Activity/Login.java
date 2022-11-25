@@ -26,13 +26,13 @@ import java.sql.Connection;
 import java.util.List;
 
 public class Login extends AppCompatActivity {
-    public static final int STARTUP_DELAY = 300;
-    public static final int ANIM_ITEM_DURATION = 1000;
-    public static final int EDITTEXT_DELAY = 300;
-    public static final int BUTTON_DELAY = 500;
-    public static final int VIEW_DELAY = 400;
-    public static final int CHECKBOK_DELAY = 600;
-    public static final int TEXTVIEW_DELAY = 600;
+    public static final int STARTUP_DELAY = 200;
+    public static final int ANIM_ITEM_DURATION = 600;
+    public static final int EDITTEXT_DELAY = 100;
+    public static final int BUTTON_DELAY = 250;
+    public static final int VIEW_DELAY = 250;
+    public static final int CHECKBOK_DELAY = 0;
+    public static final int TEXTVIEW_DELAY = 250;
 
     Button btnDangNhap,btnDangKy;
     EditText edtTenTK, edtMatKhau;
