@@ -24,13 +24,11 @@ import java.sql.Connection;
 import java.util.List;
 
 public class SignIn extends AppCompatActivity {
-    public static final int STARTUP_DELAY = 500;
-    public static final int ANIM_ITEM_DURATION = 1000;
-    public static final int EDITTEXT_DELAY = 500;
-    public static final int BUTTON_DELAY = 700;
-    public static final int VIEW_DELAY = 600;
-    public static final int CHECKBOK_DELAY = 600;
-    public static final int TEXTVIEW_DELAY = 600;
+    public static final int STARTUP_DELAY = 300;
+    public static final int ANIM_ITEM_DURATION = 700;
+    public static final int EDITTEXT_DELAY = 250;
+    public static final int BUTTON_DELAY = 250;
+    public static final int VIEW_DELAY = 300;
 
     Context context;
     Button btnTroLai,btnDangKy;
