@@ -51,6 +51,7 @@ public class fragmentTrangChu extends Fragment {
         imageSlider.setImageList(images);
 
 
+
         return view;
     }
     public void loadData(){
