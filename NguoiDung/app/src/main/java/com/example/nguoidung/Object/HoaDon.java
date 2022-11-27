@@ -7,8 +7,25 @@ public class HoaDon {
     private int tongGia;
     private int idDoAn;
     private int idTV;
-
+    private String tenMonAn;
+    private int giaMonAn;
     public HoaDon() {
+    }
+
+    public String getTenMonAn() {
+        return tenMonAn;
+    }
+
+    public void setTenMonAn(String tenMonAn) {
+        this.tenMonAn = tenMonAn;
+    }
+
+    public int getGiaMonAn() {
+        return giaMonAn;
+    }
+
+    public void setGiaMonAn(int giaMonAn) {
+        this.giaMonAn = giaMonAn;
     }
 
     public int getIdHoaDon() {

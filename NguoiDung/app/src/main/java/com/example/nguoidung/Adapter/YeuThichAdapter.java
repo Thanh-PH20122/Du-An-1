@@ -7,7 +7,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Build;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,16 +20,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nguoidung.Activity.Home;
-import com.example.nguoidung.Activity.MainActivity;
 import com.example.nguoidung.Dao.HoaDonDao;
 import com.example.nguoidung.Dao.YeuThichDao;
-import com.example.nguoidung.Object.DoAn;
 import com.example.nguoidung.Object.HoaDon;
+import com.example.nguoidung.Object.YeuThich;
 import com.example.nguoidung.R;
 
 import java.io.IOException;
@@ -43,12 +39,12 @@ import java.util.Date;
 import java.util.List;
 
 
-public class DoAnAdapter extends RecyclerView.Adapter<DoAnAdapter.ViewHolder>{
-    List<DoAn> ls;
+public class YeuThichAdapter extends RecyclerView.Adapter<YeuThichAdapter.ViewHolder>{
+    List<YeuThich> ls;
     Context context;
     LayoutInflater inflater;
 
-    public DoAnAdapter(List<DoAn> ls, Context context) {
+    public YeuThichAdapter(List<YeuThich> ls, Context context) {
         this.ls = ls;
         this.context = context;
         notifyDataSetChanged();
@@ -58,15 +54,15 @@ public class DoAnAdapter extends RecyclerView.Adapter<DoAnAdapter.ViewHolder>{
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         inflater = ((Activity)context).getLayoutInflater();
-        View view = inflater.inflate(R.layout.item_view_mon_an,null);
+        View view = inflater.inflate(R.layout.item_yeu_thich,null);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.imageView.setImageBitmap(CovertBitmap(ls.get(position).getImage()));
-        holder.txtTenDoAn.setText(ls.get(position).getTenDoAn());
-        holder.txtGiaDoAn.setText(String.valueOf(ls.get(position).getGia()));
+        holder.txtTenDoAn.setText(ls.get(position).getTenMonAn());
+        holder.txtGiaDoAn.setText(String.valueOf(ls.get(position).getGiaMonAn()));
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,23 +71,22 @@ public class DoAnAdapter extends RecyclerView.Adapter<DoAnAdapter.ViewHolder>{
         });
     }
     public void showDialog(int position, int gravity){
-        View view = inflater.inflate(R.layout.trang_chu_dialog_mua_do_an, null);
+        View view = inflater.inflate(R.layout.yeu_thich_dialog_mua_do_an, null);
         Dialog dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(view);
 
-        ImageView imageView = view.findViewById(R.id.trang_chu_dialog_mua_do_an_img);
-        TextView txtTenMonAn = view.findViewById(R.id.trang_chu_dialog_mua_do_an_ten_mon_an);
-        TextView txtGiaMonAn = view.findViewById(R.id.trang_chu_dialog_mua_do_an_gia_mon_an);
-        EditText edtSoLuong = view.findViewById(R.id.trang_chu_dialog_mua_do_an_edt_soLuong);
-        ImageView btnXoa = view.findViewById(R.id.trang_chu_dialog_mua_do_an_btn_xoa);
-        ImageView btnThem = view.findViewById(R.id.trang_chu_dialog_mua_do_an_btn_them);
-        Button btnYeuThich = view.findViewById(R.id.trang_chu_dialog_mua_do_an_btn_them_yeu_thich);
-        Button btnMua = view.findViewById(R.id.trang_chu_dialog_mua_do_an_btn_mua_ngay);
+        ImageView imageView = view.findViewById(R.id.yeu_thich_dialog_mua_do_an_img);
+        TextView txtTenMonAn = view.findViewById(R.id.yeu_thich_dialog_mua_do_an_ten_mon_an);
+        TextView txtGiaMonAn = view.findViewById(R.id.yeu_thich_dialog_mua_do_an_gia_mon_an);
+        EditText edtSoLuong = view.findViewById(R.id.yeu_thich_dialog_mua_do_an_edt_soLuong);
+        ImageView btnXoa = view.findViewById(R.id.yeu_thich_dialog_mua_do_an_btn_xoa);
+        ImageView btnThem = view.findViewById(R.id.yeu_thich_dialog_mua_do_an_btn_them);
+        Button btnMua = view.findViewById(R.id.yeu_thich_dialog_mua_do_an_btn_mua_ngay);
 
         imageView.setImageBitmap(CovertBitmap(ls.get(position).getImage()));
-        txtTenMonAn.setText(ls.get(position).getTenDoAn());
-        txtGiaMonAn.setText(String.valueOf(ls.get(position).getGia()));
+        txtTenMonAn.setText(ls.get(position).getTenMonAn());
+        txtGiaMonAn.setText(String.valueOf(ls.get(position).getGiaMonAn()));
         edtSoLuong.setText("1");
 
         btnXoa.setOnClickListener(new View.OnClickListener() {
@@ -112,22 +107,7 @@ public class DoAnAdapter extends RecyclerView.Adapter<DoAnAdapter.ViewHolder>{
                     edtSoLuong.setText(String.valueOf(soLuong));
             }
         });
-
-        btnYeuThich.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SharedPreferences pref = context.getSharedPreferences("ID_FILE", Context.MODE_PRIVATE);
-                YeuThichDao dao = new YeuThichDao();
-                int idDoAn = ls.get(position).getIdDoAn();
-                int idTV = pref.getInt("idTV",-1);
-                dao.insertRow(idDoAn,idTV);
-                Toast.makeText(context, "Thêm yêu thích thành công", Toast.LENGTH_SHORT).show();
-                dialog.dismiss();
-            }
-        });
-
         btnMua.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void onClick(View v) {
                 SharedPreferences pref = context.getSharedPreferences("ID_FILE", Context.MODE_PRIVATE);
@@ -137,7 +117,7 @@ public class DoAnAdapter extends RecyclerView.Adapter<DoAnAdapter.ViewHolder>{
                 Date date = Calendar.getInstance().getTime();
                 String ngayMua = simpleDateFormat.format(date);
                 int tongGia = gia*soLuong;
-                int idDoAn = ls.get(position).getIdDoAn();
+                int idDoAn = ls.get(position).getIdDoAN();
                 int idTV = pref.getInt("idTV",-1);
                 HoaDon hoaDon = new HoaDon();
                 hoaDon.setSoLuong(soLuong);
@@ -175,7 +155,6 @@ public class DoAnAdapter extends RecyclerView.Adapter<DoAnAdapter.ViewHolder>{
         HoaDonDao dao = new HoaDonDao();
         dao.insertRow(obj);
     }
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView txtTenDoAn;
@@ -183,10 +162,10 @@ public class DoAnAdapter extends RecyclerView.Adapter<DoAnAdapter.ViewHolder>{
         CardView cardView;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.item_view_mon_an_img);
-            txtTenDoAn = itemView.findViewById(R.id.item_view_mon_an_ten_mon_an);
-            txtGiaDoAn = itemView.findViewById(R.id.item_view_mon_an_gia_mon_an);
-            cardView = itemView.findViewById(R.id.item_view_mon_an_cardView);
+            imageView = itemView.findViewById(R.id.item_yeu_thich_img);
+            txtTenDoAn = itemView.findViewById(R.id.item_yeu_thich_ten_mon_an);
+            txtGiaDoAn = itemView.findViewById(R.id.item_yeu_thich_gia);
+            cardView = itemView.findViewById(R.id.item_yeu_thich_cardView);
         }
     }
     public Bitmap CovertBitmap(String path) {

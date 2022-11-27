@@ -3,6 +3,9 @@ package com.example.nguoidung.Object;
 public class YeuThich {
     private int idDoAN;
     private int idTV;
+    private String image;
+    private String tenMonAn;
+    private int giaMonAn;
 
     public YeuThich() {
     }
@@ -21,5 +24,29 @@ public class YeuThich {
 
     public void setIdTV(int idTV) {
         this.idTV = idTV;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getTenMonAn() {
+        return tenMonAn;
+    }
+
+    public void setTenMonAn(String tenMonAn) {
+        this.tenMonAn = tenMonAn;
+    }
+
+    public int getGiaMonAn() {
+        return giaMonAn;
+    }
+
+    public void setGiaMonAn(int giaMonAn) {
+        this.giaMonAn = giaMonAn;
     }
 }

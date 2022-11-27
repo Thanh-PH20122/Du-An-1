@@ -4,4 +4,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.fragmenHoaDon"
-    android:background="@color/teal_700"/>
+    android:background="@color/white"
+    >
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/fragment_hoa_don_rcv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+
+</FrameLayout>

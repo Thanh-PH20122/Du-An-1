@@ -6,8 +6,11 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.ContextWrapper;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 
@@ -19,17 +22,22 @@ import com.example.nguoidung.Fragment.fragmentTrangChu;
 import com.example.nguoidung.Fragment.fragmentNguoiDung;
 import com.example.nguoidung.R;
 
+import java.io.File;
+
 public class Home extends AppCompatActivity {
     FragmentTransaction transaction;
     AHBottomNavigation bottomNavigation;
-
+    public String tenNguoiDung;
+    public int idTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trang_chu);
         bottomNavigation = findViewById(R.id.bottom_navigation);
-
+        Intent intent = getIntent();
+        tenNguoiDung = intent.getStringExtra("tenNguoiDung");
+        idTV = intent.getIntExtra("idTV",-1);
         String[] display = new String[]{
                 "Trang chủ",
                 "Yêu thích",
@@ -107,6 +115,13 @@ public class Home extends AppCompatActivity {
 
         }
     }
+//    public void luuData(){
+//        ContextWrapper contextWrapper = new ContextWrapper(
+//                getApplicationContext());
+////Tạo (Hoặc là mở file nếu nó đã tồn tại) Trong bộ nhớ trong có thư mục là ThuMucCuaToi.
+//        File directory = contextWrapper.getDir(filepath, Context.MODE_PRIVATE);
+//        myInternalFile = new File(directory, filename);
+//    }
 
 
     @Override
