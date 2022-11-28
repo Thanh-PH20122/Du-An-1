@@ -1,6 +1,11 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+        maven { url 'https://jitpack.io' }
+
         google()
         mavenCentral()
     }
@@ -8,9 +13,16 @@ pluginManagement {
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
+        jcenter()
+        maven {
+            url "https://maven.google.com"
+        }
+        maven { url 'https://jitpack.io' }
+
         google()
         mavenCentral()
     }
 }
+
 rootProject.name = "NguoiDung"
 include ':app'
