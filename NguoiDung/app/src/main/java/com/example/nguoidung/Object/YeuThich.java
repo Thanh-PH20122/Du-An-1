@@ -1,6 +1,7 @@
 package com.example.nguoidung.Object;
 
 public class YeuThich {
+    private int idYeuThich;
     private int idDoAN;
     private int idTV;
     private String image;
@@ -8,6 +9,14 @@ public class YeuThich {
     private int giaMonAn;
 
     public YeuThich() {
+    }
+
+    public int getIdYeuThich() {
+        return idYeuThich;
+    }
+
+    public void setIdYeuThich(int idYeuThich) {
+        this.idYeuThich = idYeuThich;
     }
 
     public int getIdDoAN() {

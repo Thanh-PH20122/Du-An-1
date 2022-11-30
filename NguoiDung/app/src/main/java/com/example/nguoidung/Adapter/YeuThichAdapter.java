@@ -2,6 +2,7 @@ package com.example.nguoidung.Adapter;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -43,11 +45,12 @@ public class YeuThichAdapter extends RecyclerView.Adapter<YeuThichAdapter.ViewHo
     List<YeuThich> ls;
     Context context;
     LayoutInflater inflater;
-
+    YeuThichDao dao;
     public YeuThichAdapter(List<YeuThich> ls, Context context) {
         this.ls = ls;
         this.context = context;
         notifyDataSetChanged();
+        dao = new YeuThichDao();
     }
 
     @NonNull
@@ -69,6 +72,34 @@ public class YeuThichAdapter extends RecyclerView.Adapter<YeuThichAdapter.ViewHo
                 showDialog(holder.getAdapterPosition(), Gravity.BOTTOM);
             }
         });
+        holder.imgXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Delete(holder.getAdapterPosition());
+            }
+        });
+    }
+    public void Delete(int position){
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Thông báo");
+        builder.setMessage("Bạn có muốn xóa");
+        builder.setIcon(R.mipmap.ic_launcher);
+        builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dao.deleteRow(ls.get(position));
+                loadData();
+                Toast.makeText(context, "Xóa Thành Công", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+            }
+        });
+        builder.show();
     }
     public void showDialog(int position, int gravity){
         View view = inflater.inflate(R.layout.yeu_thich_dialog_mua_do_an, null);
@@ -156,7 +187,7 @@ public class YeuThichAdapter extends RecyclerView.Adapter<YeuThichAdapter.ViewHo
         dao.insertRow(obj);
     }
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imageView;
+        ImageView imageView,imgXoa;
         TextView txtTenDoAn;
         TextView txtGiaDoAn;
         CardView cardView;
@@ -166,6 +197,7 @@ public class YeuThichAdapter extends RecyclerView.Adapter<YeuThichAdapter.ViewHo
             txtTenDoAn = itemView.findViewById(R.id.item_yeu_thich_ten_mon_an);
             txtGiaDoAn = itemView.findViewById(R.id.item_yeu_thich_gia);
             cardView = itemView.findViewById(R.id.item_yeu_thich_cardView);
+            imgXoa = itemView.findViewById(R.id.item_yeu_thich_img_xoa);
         }
     }
     public Bitmap CovertBitmap(String path) {
@@ -182,5 +214,12 @@ public class YeuThichAdapter extends RecyclerView.Adapter<YeuThichAdapter.ViewHo
             e.printStackTrace();
         }
         return mbitmap;
+    }
+    public void loadData() {
+        SharedPreferences pref = context.getSharedPreferences("ID_FILE", Context.MODE_PRIVATE);
+        int idTV = pref.getInt("idTV",-1);
+        ls.clear();
+        ls = dao.getAll(idTV);
+        notifyDataSetChanged();
     }
 }
