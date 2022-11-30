@@ -1,9 +1,7 @@
 package com.example.nguoidung.Dao;
 
 import android.util.Log;
-import android.widget.Toast;
 
-import com.example.nguoidung.Object.ThanhVien;
 import com.example.nguoidung.Object.YeuThich;
 import com.example.nguoidung.SQLsever.SQLsever;
 
@@ -27,7 +25,7 @@ public class YeuThichDao {
         try {
             if (this.connection != null) {
 
-                String sqlQuery = "select da.image,da.tenDoAn, da.gia,yt.idDoAn from yeuThich yt \n" +
+                String sqlQuery = "select yt.idYeuThich,da.image,da.tenDoAn, da.gia,yt.idDoAn from yeuThich yt \n" +
                         "inner join DoAn da on yt.idDoAn = da.idDoAn\n" +
                         "inner join ThanhVien tv on yt.idTV = tv.idTV\n" +
                         "where yt.idTV = " + idTV;
@@ -38,6 +36,7 @@ public class YeuThichDao {
 
                 while (resultSet.next()) { // đọc dữ liệu gán vào đối tượng và đưa vào list
                     YeuThich obj = new YeuThich();
+                    obj.setIdYeuThich(resultSet.getInt("idYeuThich"));
                     obj.setImage(resultSet.getString("image"));
                     obj.setTenMonAn(resultSet.getString("tenDoAn"));
                     obj.setGiaMonAn(resultSet.getInt("gia"));
@@ -79,4 +78,27 @@ public class YeuThichDao {
             e.printStackTrace();
         }
     }
+    public void deleteRow(YeuThich obj){
+
+        try {
+            if (this.connection != null) {
+                // ghép chuỗi SQL
+                String sqlUpdate = "delete from yeuThich where idYeuThich = "+obj.getIdYeuThich()+"";
+
+
+                PreparedStatement stmt = this.connection.prepareStatement(sqlUpdate);
+                stmt.execute(); // thực thi câu lệnh SQL
+
+                Log.d("zzzzz", "delete: finish delete");
+
+
+            } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
+
+
+        } catch (Exception e) {
+            Log.e("zzzzzzzzzz", "delete: Có lỗi sửa dữ liệu " );
+            e.printStackTrace();
+        }
+    }
+
 }
