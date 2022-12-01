@@ -12,11 +12,11 @@ import androidx.fragment.app.Fragment;
 import com.example.nhom_8.R;
 
 public class QuanLyTK_Fragment extends Fragment {
-    @Nullable
+    View view;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_quan_ly_tk, container, false);
-        return view;
+        view = inflater.inflate(R.layout.fragment_quan_ly_tk, container, false);
 
+        return view;
     }
 }
