@@ -39,6 +39,7 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHolder
         holder.txtSoLuong.setText(String.valueOf(ls.get(position).getSoLuong()));
         holder.txtTongGia.setText(String.valueOf(ls.get(position).getTongGia()));
         holder.txtNgayMua.setText(ls.get(position).getNgayMua());
+        holder.txtNguoiDung.setText(ls.get(position).getTenThanhVien());
     }
 
     @Override
@@ -47,15 +48,15 @@ public class HoaDonAdapter extends RecyclerView.Adapter<HoaDonAdapter.ViewHolder
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        TextView txtTenMonAN,txtGia,txtSoLuong,txtTongGia,txtNgayMua;
+        TextView txtTenMonAN,txtGia,txtSoLuong,txtTongGia,txtNgayMua,txtNguoiDung;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             txtTenMonAN = itemView.findViewById(R.id.item_hoa_don_ten_mon_an);
             txtGia = itemView.findViewById(R.id.item_hoa_don_gia_mon_an);
             txtSoLuong = itemView.findViewById(R.id.item_hoa_don_soLuong);
             txtTongGia = itemView.findViewById(R.id.item_hoa_don_tong_gia);
-            txtNgayMua = itemView.findViewById(R.id.item_hoa_don_ngay_mua
-            );
+            txtNgayMua = itemView.findViewById(R.id.item_hoa_don_ngay_mua);
+            txtNguoiDung = itemView.findViewById(R.id.item_hoa_don_ten_nguoi_mua);
         }
     }
 }

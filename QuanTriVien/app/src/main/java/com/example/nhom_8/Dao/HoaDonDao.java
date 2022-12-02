@@ -3,6 +3,7 @@ package com.example.nhom_8.Dao;
 import android.util.Log;
 
 import com.example.nhom_8.Object.HoaDon;
+import com.example.nhom_8.Object.YeuThich;
 import com.example.nhom_8.SQLsever.SQLsever;
 
 import java.sql.Connection;
@@ -19,15 +20,15 @@ public class HoaDonDao {
         SQLsever db = new SQLsever();
         connection = db.openConnect(); // tạo mới DAO thì mở kết nối CSDL
     }
-    public List<HoaDon> getAll(int idTV){
+    public List<HoaDon> getAll(){
         List<HoaDon> list = new ArrayList<HoaDon>();
 
         try {
             if (this.connection != null) {
 
-                String sqlQuery = "select an.tenDoAn, an.gia, hd.soLuong, hd.tongGia,hd.ngayMua from HoaDon hd \n" +
-                        "inner join DoAn an on hd.idDoAn = an.idDoAn\n" +
-                        "where idTV = "+idTV+"" ;
+                String sqlQuery = "select an.tenDoAn, an.gia, hd.soLuong, hd.tongGia,hd.ngayMua,tv.tenNguoiDung from HoaDon hd\n" +
+                        "  inner join DoAn an on hd.idDoAn = an.idDoAn\n" +
+                        "  inner join ThanhVien tv on tv.idTV = hd.idTV" ;
 
                 Statement statement = this.connection.createStatement(); // khởi tạo cấu trúc truy vấn
 
@@ -40,7 +41,7 @@ public class HoaDonDao {
                     obj.setSoLuong(resultSet.getInt("soLuong"));
                     obj.setTongGia(resultSet.getInt("tongGia"));
                     obj.setNgayMua(resultSet.getString("NgayMua"));
-                    obj.setIdTV(idTV);
+                    obj.setTenThanhVien(resultSet.getString("tenNguoiDung"));
                     list.add(obj);
                 }
             } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
@@ -54,26 +55,25 @@ public class HoaDonDao {
 
         return  list;
     }
-    public void insertRow (HoaDon obj){
+    public void deleteRow(HoaDon obj){
 
         try {
             if (this.connection != null) {
                 // ghép chuỗi SQL
-                String insertSQL = "insert into HoaDon (soLuong,ngayMua,tongGia,idDoAn,idTV) values ("+obj.getSoLuong()+",'"+obj.getNgayMua()+"',"+obj.getTongGia()+","+obj.getIdDoAn()+","+obj.getIdTV()+")";
+                String sqlUpdate = "delete from HoaDon where idHoaDon = "+obj.getIdHoaDon()+"";
 
-                String generatedColumns[] = { "idHoaDon" };
-                PreparedStatement stmtInsert = this.connection.prepareStatement(insertSQL, generatedColumns);
-                stmtInsert.execute();
-                Log.d("zzzzz", "insertRow: finish insert");
-                // lấy ra ID cột tự động tăng
-                ResultSet rs = stmtInsert.getGeneratedKeys();
+
+                PreparedStatement stmt = this.connection.prepareStatement(sqlUpdate);
+                stmt.execute(); // thực thi câu lệnh SQL
+
+                Log.d("zzzzz", "delete: finish delete");
 
 
             } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
 
 
         } catch (Exception e) {
-            Log.e("zzzzzzzzzz", "insertRow: Có lỗi thêm dữ liệu " );
+            Log.e("zzzzzzzzzz", "delete: Có lỗi sửa dữ liệu " );
             e.printStackTrace();
         }
     }

@@ -162,7 +162,6 @@ public class DoAnAdapter extends RecyclerView.Adapter<DoAnAdapter.ViewHolder>{
         edtTenDoAN.setText(ls.get(position).getTenDoAn());
         edtGiaDoAN.setText(String.valueOf(ls.get(position).getGia()));
         spinner.setSelection(covertIndexSpinnerTenLoaiDoAN(ls.get(position).getIdLoaiDoAN()));
-
         List<String> lsTenLoaiDoAn = loaiDoAnDao.getAllTenLoaiDoAn();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_expandable_list_item_1,lsTenLoaiDoAn);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
