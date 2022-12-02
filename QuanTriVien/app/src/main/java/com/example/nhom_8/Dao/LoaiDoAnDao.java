@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.nhom_8.Object.DoAn;
 import com.example.nhom_8.Object.LoaiDoAn;
+import com.example.nhom_8.Object.YeuThich;
 import com.example.nhom_8.SQLsever.SQLsever;
 
 import java.sql.Connection;
@@ -89,6 +90,50 @@ public class LoaiDoAnDao {
 
         } catch (Exception e) {
             Log.e("zzzzzzzzzz", "insertRow: Có lỗi thêm dữ liệu " );
+            e.printStackTrace();
+        }
+    }
+    public void updateRow(LoaiDoAn obj){
+
+        try {
+            if (this.connection != null) {
+                // ghép chuỗi SQL
+                String sqlUpdate = "update LoaiDoAn set tenLoai = N'"+obj.getTenDoAn()+"',idQTV = 1 where idLoaiDoAn = "+obj.getIdLoaiDoAn()+"";
+
+
+                PreparedStatement stmt = this.connection.prepareStatement(sqlUpdate);
+                stmt.execute(); // thực thi câu lệnh SQL
+
+                Log.d("zzzzz", "updateRow: finish Update");
+
+
+            } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
+
+
+        } catch (Exception e) {
+            Log.e("zzzzzzzzzz", "updateRow: Có lỗi sửa dữ liệu " );
+            e.printStackTrace();
+        }
+    }
+    public void deleteRow(LoaiDoAn obj){
+
+        try {
+            if (this.connection != null) {
+                // ghép chuỗi SQL
+                String sqlUpdate = "delete from yeuThich where idYeuThich = "+obj.getIdLoaiDoAn()+"";
+
+
+                PreparedStatement stmt = this.connection.prepareStatement(sqlUpdate);
+                stmt.execute(); // thực thi câu lệnh SQL
+
+                Log.d("zzzzz", "delete: finish delete");
+
+
+            } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
+
+
+        } catch (Exception e) {
+            Log.e("zzzzzzzzzz", "delete: Có lỗi sửa dữ liệu " );
             e.printStackTrace();
         }
     }
