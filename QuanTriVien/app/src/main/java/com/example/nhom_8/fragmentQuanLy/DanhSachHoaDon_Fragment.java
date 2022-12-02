@@ -41,7 +41,7 @@ public class DanhSachHoaDon_Fragment extends Fragment {
         LinearLayoutManager linearLayout =new LinearLayoutManager(context);
         linearLayout.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayout);
-        dao = new HoaDonDao();
+        dao = new HoaDonDao(context);
         ls = dao.getAll();
         if (ls.isEmpty()){
 

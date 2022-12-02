@@ -1,6 +1,8 @@
 package com.example.nhom_8.Dao;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.nhom_8.Object.DoAn;
 import com.example.nhom_8.Object.LoaiDoAn;
@@ -16,10 +18,12 @@ import java.util.List;
 
 public class LoaiDoAnDao {
     Connection connection;
-    public LoaiDoAnDao(){
+    Context context;
+    public LoaiDoAnDao(Context context){
         // hàm khởi tạo để mở kết nối
         SQLsever db = new SQLsever();
         connection = db.openConnect(); // tạo mới DAO thì mở kết nối CSDL
+        this.context = context;
     }
     public List<String> getAllTenLoaiDoAn(){
         List<String> list = new ArrayList<>();
@@ -75,12 +79,13 @@ public class LoaiDoAnDao {
         try {
             if (this.connection != null) {
                 // ghép chuỗi SQL
-                String insertSQL = "insert into LoaiDoAN values (N,'"+obj.getTenDoAn()+"',1)";
+                String insertSQL = "insert into LoaiDoAN values (N'"+obj.getTenDoAn()+"',1)";
 
                 String generatedColumns[] = { "idLoaiDoAn" };
                 PreparedStatement stmtInsert = this.connection.prepareStatement(insertSQL, generatedColumns);
                 stmtInsert.execute();
                 Log.d("zzzzz", "insertRow: finish insert");
+                Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
                 // lấy ra ID cột tự động tăng
                 ResultSet rs = stmtInsert.getGeneratedKeys();
 
@@ -120,12 +125,12 @@ public class LoaiDoAnDao {
         try {
             if (this.connection != null) {
                 // ghép chuỗi SQL
-                String sqlUpdate = "delete from yeuThich where idYeuThich = "+obj.getIdLoaiDoAn()+"";
+                String sqlUpdate = "delete from LoaiDoAn where idLoaiDoAn = "+obj.getIdLoaiDoAn()+"";
 
 
                 PreparedStatement stmt = this.connection.prepareStatement(sqlUpdate);
                 stmt.execute(); // thực thi câu lệnh SQL
-
+                Toast.makeText(context, "Xóa Thành Công", Toast.LENGTH_SHORT).show();
                 Log.d("zzzzz", "delete: finish delete");
 
 
@@ -134,6 +139,7 @@ public class LoaiDoAnDao {
 
         } catch (Exception e) {
             Log.e("zzzzzzzzzz", "delete: Có lỗi sửa dữ liệu " );
+            Toast.makeText(context, "Đang có đồ ăn, không thể xóa", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }

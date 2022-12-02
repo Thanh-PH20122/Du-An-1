@@ -42,7 +42,7 @@ public class QuanLyTK_Fragment extends Fragment {
         LinearLayoutManager linearLayout =new LinearLayoutManager(context);
         linearLayout.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayout);
-        dao = new ThanhVienDao();
+        dao = new ThanhVienDao(context);
         ls = dao.getAll();
         if (ls.isEmpty()){
 

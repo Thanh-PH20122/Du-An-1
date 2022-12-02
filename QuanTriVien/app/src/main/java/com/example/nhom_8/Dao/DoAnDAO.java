@@ -1,6 +1,8 @@
 package com.example.nhom_8.Dao;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.nhom_8.Object.DoAn;
 import com.example.nhom_8.Object.ThanhVien;
@@ -16,10 +18,12 @@ import java.util.List;
 
 public class DoAnDAO {
     Connection connection;
-    public DoAnDAO(){
+    Context context;
+    public DoAnDAO(Context context){
         // hàm khởi tạo để mở kết nối
         SQLsever db = new SQLsever();
         connection = db.openConnect(); // tạo mới DAO thì mở kết nối CSDL
+        this.context = context;
     }
     public List<DoAn> getAll(){
             List<DoAn> list = new ArrayList<DoAn>();
@@ -112,13 +116,14 @@ public class DoAnDAO {
                 stmt.execute(); // thực thi câu lệnh SQL
 
                 Log.d("zzzzz", "delete: finish delete");
-
+                Toast.makeText(context, "Xóa Thành Công", Toast.LENGTH_SHORT).show();
 
             } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
 
 
         } catch (Exception e) {
             Log.e("zzzzzzzzzz", "delete: Có lỗi sửa dữ liệu " );
+            Toast.makeText(context, "Đang có hóa đơn hay yêu thích, không thể xóa", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
