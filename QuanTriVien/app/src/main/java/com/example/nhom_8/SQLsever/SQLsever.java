@@ -6,13 +6,13 @@ import android.util.Log;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
-public class DbSqlServer {
-
+public class SQLsever {
     Connection connection;
     final String TAG = "zzzzzz";
 
     public Connection openConnect(){
-        String ip = "10.24.22.70", port = "1433", user = "sa", pass = "003127", db = "demoImg";
+        //10.24.13.4
+        String ip = "10.24.13.4", port = "1433", user = "sa", pass = "003127", db = "DuAn1";
         StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(threadPolicy);
         try {
@@ -26,6 +26,4 @@ public class DbSqlServer {
         }
         return connection;
     }
-
-
 }

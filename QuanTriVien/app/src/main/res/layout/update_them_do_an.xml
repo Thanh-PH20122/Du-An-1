@@ -15,6 +15,26 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:orientation="vertical">
+        <com.google.android.material.textfield.TextInputLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp"
+            app:hintEnabled="true"
+            tools:layout_editor_absoluteX="-176dp"
+            tools:layout_editor_absoluteY="379dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/update_do_an_image"
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:hint="Link ảnh món ăn"
+                android:layout_marginTop="10dp"/>
+
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
 
@@ -50,11 +70,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
+                android:inputType="number"
                 android:hint="Giá" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
-
+        <Spinner
+            android:id="@+id/update_do_an_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
