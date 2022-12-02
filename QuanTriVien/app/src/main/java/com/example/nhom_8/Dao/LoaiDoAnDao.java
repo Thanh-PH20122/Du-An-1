@@ -69,12 +69,12 @@ public class LoaiDoAnDao {
 
         return  ls;
     }
-    public void insertRow (){
+    public void insertRow (LoaiDoAn obj){
 
         try {
             if (this.connection != null) {
                 // ghép chuỗi SQL
-                String insertSQL = "";
+                String insertSQL = "insert into LoaiDoAN values (N,'"+obj.getTenDoAn()+"',1)";
 
                 String generatedColumns[] = { "idLoaiDoAn" };
                 PreparedStatement stmtInsert = this.connection.prepareStatement(insertSQL, generatedColumns);
