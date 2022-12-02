@@ -6,10 +6,18 @@ public class HoaDon {
     private String ngayMua;
     private int tongGia;
     private int idDoAn;
-    private int idTV;
     private String tenMonAn;
     private int giaMonAn;
+    private String tenThanhVien;
     public HoaDon() {
+    }
+
+    public String getTenThanhVien() {
+        return tenThanhVien;
+    }
+
+    public void setTenThanhVien(String tenThanhVien) {
+        this.tenThanhVien = tenThanhVien;
     }
 
     public String getTenMonAn() {
@@ -68,11 +76,5 @@ public class HoaDon {
         this.idDoAn = idDoAn;
     }
 
-    public int getIdTV() {
-        return idTV;
-    }
 
-    public void setIdTV(int idTV) {
-        this.idTV = idTV;
-    }
 }

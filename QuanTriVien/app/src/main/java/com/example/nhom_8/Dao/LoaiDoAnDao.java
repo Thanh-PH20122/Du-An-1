@@ -7,6 +7,7 @@ import com.example.nhom_8.Object.LoaiDoAn;
 import com.example.nhom_8.SQLsever.SQLsever;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -67,5 +68,28 @@ public class LoaiDoAnDao {
         }
 
         return  ls;
+    }
+    public void insertRow (){
+
+        try {
+            if (this.connection != null) {
+                // ghép chuỗi SQL
+                String insertSQL = "";
+
+                String generatedColumns[] = { "idLoaiDoAn" };
+                PreparedStatement stmtInsert = this.connection.prepareStatement(insertSQL, generatedColumns);
+                stmtInsert.execute();
+                Log.d("zzzzz", "insertRow: finish insert");
+                // lấy ra ID cột tự động tăng
+                ResultSet rs = stmtInsert.getGeneratedKeys();
+
+
+            } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
+
+
+        } catch (Exception e) {
+            Log.e("zzzzzzzzzz", "insertRow: Có lỗi thêm dữ liệu " );
+            e.printStackTrace();
+        }
     }
 }

@@ -40,7 +40,7 @@
                         android:layout_height="wrap_content"
                         android:text="Tên món ăn:"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:layout_marginLeft="10dp"
                         android:layout_gravity="center" />
 
@@ -53,7 +53,7 @@
                         android:layout_marginBottom="5dp"
                         android:text="Tên món ăn:"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -65,7 +65,7 @@
                         android:layout_height="wrap_content"
                         android:text="Giá:"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:layout_marginLeft="10dp"
                         android:textAlignment="center"/>
 
@@ -77,7 +77,7 @@
                         android:layout_marginBottom="5dp"
                         android:text="Giá:"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -89,7 +89,7 @@
                         android:layout_height="wrap_content"
                         android:text="Số Lượng"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:layout_marginLeft="10dp"
                         android:textAlignment="center"/>
 
@@ -101,7 +101,7 @@
                         android:layout_marginBottom="5dp"
                         android:text="Số lượng:"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -113,7 +113,7 @@
                         android:layout_height="wrap_content"
                         android:text="Tổng giá:"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:layout_marginLeft="10dp"
                         android:textAlignment="center"/>
 
@@ -125,7 +125,7 @@
                         android:layout_marginBottom="5dp"
                         android:text="Tổng giá:"
                         android:textColor="@color/black"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -137,7 +137,7 @@
                         android:layout_height="wrap_content"
                         android:text="Ngày mua"
                         android:textColor="@color/black"
-                        android:textSize="20dp"
+                        android:textSize="15dp"
                         android:layout_marginLeft="10dp"
                         android:textAlignment="center"/>
 
@@ -149,7 +149,30 @@
                         android:layout_marginBottom="5dp"
                         android:text="Ngày mua:"
                         android:textColor="@android:color/holo_red_light"
-                        android:textSize="20dp" />
+                        android:textSize="15dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Tên người mua"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"
+                        android:layout_marginLeft="10dp"
+                        android:textAlignment="center"/>
+
+                    <TextView
+                        android:id="@+id/item_hoa_don_ten_nguoi_mua"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="tên người mua:"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="15dp" />
                 </LinearLayout>
             </LinearLayout>
 

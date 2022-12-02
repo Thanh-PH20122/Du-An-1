@@ -32,7 +32,7 @@ public class DanhSachHoaDon_Fragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_danh_sach_hoa_don, container, false);
         context = view.getContext();
         recyclerView = view.findViewById(R.id.fragment_hoa_don_rcv);
-//        loadData();
+        loadData();
 
 
         return view;
@@ -42,7 +42,7 @@ public class DanhSachHoaDon_Fragment extends Fragment {
         linearLayout.setOrientation(RecyclerView.VERTICAL);
         recyclerView.setLayoutManager(linearLayout);
         dao = new HoaDonDao();
-//        ls = dao.getAll();
+        ls = dao.getAll();
         if (ls.isEmpty()){
 
         }else{
