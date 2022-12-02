@@ -62,9 +62,9 @@ public class DoAnAdapter extends RecyclerView.Adapter<DoAnAdapter.ViewHolder>{
         this.ls = ls;
         this.context = context;
         notifyDataSetChanged();
-        loaiDoAnDao = new LoaiDoAnDao();
+        loaiDoAnDao = new LoaiDoAnDao(context);
         lsLoaiDoAn = loaiDoAnDao.getAll();
-        dao = new DoAnDAO();
+        dao = new DoAnDAO(context);
     }
 
     @NonNull
@@ -86,13 +86,12 @@ public class DoAnAdapter extends RecyclerView.Adapter<DoAnAdapter.ViewHolder>{
                 update(Gravity.BOTTOM,holder.getAdapterPosition());
             }
         });
-        holder.btnXoa.setVisibility(View.GONE);
-//        holder.btnXoa.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Delete(holder.getAdapterPosition());
-//            }
-//        });
+        holder.btnXoa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Delete(holder.getAdapterPosition());
+            }
+        });
     }
 
 
@@ -194,13 +193,12 @@ public class DoAnAdapter extends RecyclerView.Adapter<DoAnAdapter.ViewHolder>{
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Thông báo");
         builder.setMessage("Bạn có muốn xóa");
-        builder.setIcon(R.mipmap.ic_launcher);
+        builder.setIcon(R.drawable.logo);
         builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dao.deleteRow(ls.get(position));
                 loadData();
-                Toast.makeText(context, "Xóa Thành Công", Toast.LENGTH_SHORT).show();
 
             }
         });

@@ -1,6 +1,8 @@
 package com.example.nhom_8.Dao;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.nhom_8.Object.HoaDon;
 import com.example.nhom_8.Object.YeuThich;
@@ -15,10 +17,12 @@ import java.util.List;
 
 public class HoaDonDao {
     Connection connection;
-    public HoaDonDao(){
+    Context context;
+    public HoaDonDao(Context context){
         // hàm khởi tạo để mở kết nối
         SQLsever db = new SQLsever();
         connection = db.openConnect(); // tạo mới DAO thì mở kết nối CSDL
+        this.context = context;
     }
     public List<HoaDon> getAll(){
         List<HoaDon> list = new ArrayList<HoaDon>();
@@ -26,7 +30,7 @@ public class HoaDonDao {
         try {
             if (this.connection != null) {
 
-                String sqlQuery = "select an.tenDoAn, an.gia, hd.soLuong, hd.tongGia,hd.ngayMua,tv.tenNguoiDung from HoaDon hd\n" +
+                String sqlQuery = "select hd.idHoaDon,an.tenDoAn, an.gia, hd.soLuong, hd.tongGia,hd.ngayMua,tv.tenNguoiDung from HoaDon hd\n" +
                         "  inner join DoAn an on hd.idDoAn = an.idDoAn\n" +
                         "  inner join ThanhVien tv on tv.idTV = hd.idTV" ;
 
@@ -36,6 +40,7 @@ public class HoaDonDao {
 
                 while (resultSet.next()) { // đọc dữ liệu gán vào đối tượng và đưa vào list
                     HoaDon obj = new HoaDon();
+                    obj.setIdHoaDon(resultSet.getInt("idHoaDon"));
                     obj.setTenMonAn(resultSet.getString("tenDoAn"));
                     obj.setGiaMonAn(resultSet.getInt("gia"));
                     obj.setSoLuong(resultSet.getInt("soLuong"));
@@ -60,6 +65,7 @@ public class HoaDonDao {
         try {
             if (this.connection != null) {
                 // ghép chuỗi SQL
+                System.out.println(obj.getIdHoaDon());
                 String sqlUpdate = "delete from HoaDon where idHoaDon = "+obj.getIdHoaDon()+"";
 
 
@@ -67,13 +73,14 @@ public class HoaDonDao {
                 stmt.execute(); // thực thi câu lệnh SQL
 
                 Log.d("zzzzz", "delete: finish delete");
-
+                Toast.makeText(context, "Xóa thành công", Toast.LENGTH_SHORT).show();
 
             } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
 
 
         } catch (Exception e) {
             Log.e("zzzzzzzzzz", "delete: Có lỗi sửa dữ liệu " );
+            Toast.makeText(context, "Xóa không thành công", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
