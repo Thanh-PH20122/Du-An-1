@@ -1,14 +1,20 @@
 package com.example.nhom_8.Adapter;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -46,6 +52,12 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.View
             @Override
             public void onClick(View v) {
                 delete(holder.getAdapterPosition());
+            }
+        });
+        holder.btnSua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                update(Gravity.BOTTOM,holder.getAdapterPosition());
             }
         });
     }
@@ -87,6 +99,49 @@ public class ThanhVienAdapter extends RecyclerView.Adapter<ThanhVienAdapter.View
             }
         });
         builder.show();
+    }
+    public void update(int gravity,int position){
+        LayoutInflater infl = ((Activity)context).getLayoutInflater();
+        View v = infl.inflate(R.layout.update_tv, null);
+        Dialog dialog = new Dialog(context);
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(v);
+
+        Window window = dialog.getWindow();
+        if (window == null) {
+            return;
+        }
+        // set kích thước dialog
+        window.setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.WRAP_CONTENT);
+        window.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        // set vị trí dialog
+        WindowManager.LayoutParams windowAttributes = window.getAttributes();
+        windowAttributes.gravity = gravity;
+        window.setAttributes(windowAttributes);
+
+        EditText edtTaiKhoan = v.findViewById(R.id.update_tv_edt_taiKhoan);
+        EditText edtTenNguoiDung = v.findViewById(R.id.update_tv_edt_tenNguoiDung);
+        EditText edtMatKhau = v.findViewById(R.id.update_tv_edt_matKhau);
+        Button btnSua = v.findViewById(R.id.update_tv_btn_sua);
+
+        edtTaiKhoan.setText(ls.get(position).getUserName());
+        edtTenNguoiDung.setText(ls.get(position).getTenNguoiDung());
+        edtMatKhau.setText(ls.get(position).getPassWord());
+
+        btnSua.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ThanhVien tv = ls.get(position);
+                tv.setUserName(edtTaiKhoan.getText().toString());
+                tv.setPassWord(edtMatKhau.getText().toString());
+                tv.setTenNguoiDung(edtTenNguoiDung.getText().toString());
+                dao.updateRow(tv);
+                loadData();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
     }
     public void loadData() {
         ls.clear();
