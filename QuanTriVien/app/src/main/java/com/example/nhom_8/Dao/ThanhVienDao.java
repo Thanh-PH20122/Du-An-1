@@ -1,7 +1,10 @@
 package com.example.nhom_8.Dao;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
+import com.example.nhom_8.Object.LoaiDoAn;
 import com.example.nhom_8.Object.ThanhVien;
 import com.example.nhom_8.SQLsever.SQLsever;
 
@@ -14,10 +17,12 @@ import java.util.List;
 
 public class ThanhVienDao {
     Connection connection;
-    public ThanhVienDao(){
+    Context context;
+    public ThanhVienDao(Context context){
         // hàm khởi tạo để mở kết nối
         SQLsever db = new SQLsever();
         connection = db.openConnect(); // tạo mới DAO thì mở kết nối CSDL
+        this.context = context;
     }
     public List<ThanhVien> getAll(){
         List<ThanhVien> list = new ArrayList<ThanhVien>();
@@ -102,6 +107,29 @@ public class ThanhVienDao {
 
         } catch (Exception e) {
             Log.e("zzzzzzzzzz", "updateRow: Có lỗi sửa dữ liệu " );
+            e.printStackTrace();
+        }
+    }
+    public void deleteRow(ThanhVien obj){
+
+        try {
+            if (this.connection != null) {
+                // ghép chuỗi SQL
+                String sqlUpdate = "delete from ThanhVien where idTV = "+obj.getIdTV()+"";
+
+
+                PreparedStatement stmt = this.connection.prepareStatement(sqlUpdate);
+                stmt.execute(); // thực thi câu lệnh SQL
+                Toast.makeText(context, "Xóa Thành Công", Toast.LENGTH_SHORT).show();
+                Log.d("zzzzz", "delete: finish delete");
+
+
+            } // nếu kết nối khác null thì mới select và thêm dữ liệu vào, nếu không thì trả về ds rỗng
+
+
+        } catch (Exception e) {
+            Log.e("zzzzzzzzzz", "delete: Có lỗi sửa dữ liệu " );
+            Toast.makeText(context, "Thành viên đang có hóa đơn hoặc yêu thích, Không thể xóa", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }

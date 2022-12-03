@@ -51,7 +51,7 @@ public class ThemDoAn_Fragment extends Fragment {
         rcyViewDoAn = view.findViewById(R.id.fragment_do_an_rscView);
         button = view.findViewById(R.id.fragment_do_an_btnAdd);
         context = view.getContext();
-        loaiDoAnDao = new LoaiDoAnDao();
+        loaiDoAnDao = new LoaiDoAnDao(context);
         lsLoaiDoAn = loaiDoAnDao.getAll();
         loadData();
 
@@ -68,7 +68,7 @@ public class ThemDoAn_Fragment extends Fragment {
     public void loadData() {
         LinearLayoutManager linearLayout = new LinearLayoutManager(context);
         rcyViewDoAn.setLayoutManager(linearLayout);
-        dao = new DoAnDAO();
+        dao = new DoAnDAO(context);
         lsDoAn = dao.getAll();
         if (lsDoAn.isEmpty()) {
 

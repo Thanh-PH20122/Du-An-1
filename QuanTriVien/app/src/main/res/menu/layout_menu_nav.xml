@@ -48,7 +48,7 @@
             <item
                 android:id="@+id/menu_nav_dangXuat"
                 android:icon="@drawable/ic_baseline_logout_24"
-                android:title="Đăng xuất" />
+                android:title="Thoát" />
 
         </menu>
     </item>
