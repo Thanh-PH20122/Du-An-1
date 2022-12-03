@@ -87,8 +87,8 @@ public class ThanhVienDao {
                         "SET userName= '" + obj.getUserName() + "'," +
                         "passWord= '" + obj.getPassWord() + "'," +
                         "tenNguoiDung= '" + obj.getTenNguoiDung() + "'," +
-                        "idQTV= '" + obj.getIdQTV() + "'," +
-                        " WHERE id = " + obj.getIdTV();
+                        "idQTV= 1" +
+                        " WHERE idTV = "+obj.getIdTV()+"";
 
 
                 PreparedStatement stmt = this.connection.prepareStatement(sqlUpdate);

@@ -11,6 +11,8 @@ public class SQLsever {
     final String TAG = "zzzzzz";
 
     public Connection openConnect(){
+        //10.24.13.4
+        //192.168.0.17
         String ip = "192.168.0.17", port = "1433", user = "sa", pass = "003127", db = "DuAn1";
         StrictMode.ThreadPolicy threadPolicy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(threadPolicy);
