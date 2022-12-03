@@ -43,10 +43,10 @@ public class fragmentTrangChu extends Fragment {
         rcyViewDoUong = view.findViewById(R.id.fragment_home_rcv_nuoc_uong);
         context = view.getContext();
         ArrayList<SlideModel> images = new ArrayList<>();
-        images.add(new SlideModel(R.drawable.a1, ScaleTypes.CENTER_CROP));
-        images.add(new SlideModel(R.drawable.a2,ScaleTypes.CENTER_CROP));
-        images.add(new SlideModel(R.drawable.a3,ScaleTypes.CENTER_CROP));
-        images.add(new SlideModel(R.drawable.a4,ScaleTypes.CENTER_CROP));
+        images.add(new SlideModel(R.drawable.banh_cuon, ScaleTypes.CENTER_CROP));
+        images.add(new SlideModel(R.drawable.banh_mi,ScaleTypes.CENTER_CROP));
+        images.add(new SlideModel(R.drawable.bun_cha,ScaleTypes.CENTER_CROP));
+        images.add(new SlideModel(R.drawable.bun_dau,ScaleTypes.CENTER_CROP));
 
         imageSlider.setImageList(images);
 
