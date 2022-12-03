@@ -58,6 +58,7 @@ public class fragmentDoiMatKhau extends Fragment {
                 if (tv.getPassWord().equals(passCu) && passCu.isEmpty() == false){
                     if (passMoi1.equals(passMoi2) && passMoi1.isEmpty() == false && passMoi2.isEmpty() == false){
                         tv.setPassWord(passMoi2);
+                        System.out.println(tv.getIdTV());
                         dao.updateRow(tv);
                         Toast.makeText(context, "Đổi mật khẩu thành công", Toast.LENGTH_SHORT).show();
                         edtMatKhauCu.setText("");

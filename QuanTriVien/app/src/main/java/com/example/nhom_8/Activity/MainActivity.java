@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             view.getMenu().findItem(R.id.menu_nav_tDA).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_dSHD).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_dangXuat).setChecked(false);
-            view.getMenu().findItem(R.id.menu_nav_tongDoanhThu).setChecked(false);
+//            view.getMenu().findItem(R.id.menu_nav_tongDoanhThu).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_topMABC).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_tLDA).setChecked(false);
         } else if (item.getItemId() == R.id.menu_nav_tLDA) {
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             view.getMenu().findItem(R.id.menu_nav_qlTK).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_tLDA).setChecked(true);
             view.getMenu().findItem(R.id.menu_nav_tDA).setChecked(false);
-            view.getMenu().findItem(R.id.menu_nav_tongDoanhThu).setChecked(false);
+//            view.getMenu().findItem(R.id.menu_nav_tongDoanhThu).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_topMABC).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_dSHD).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_dangXuat).setChecked(false);
@@ -87,29 +87,31 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             view.getMenu().findItem(R.id.menu_nav_qlTK).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_tLDA).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_tDA).setChecked(true);
-            view.getMenu().findItem(R.id.menu_nav_tongDoanhThu).setChecked(false);
+//            view.getMenu().findItem(R.id.menu_nav_tongDoanhThu).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_topMABC).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_dSHD).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_dangXuat).setChecked(false);
-        } else if (item.getItemId() == R.id.menu_nav_tongDoanhThu) {
-            replaceFragment(new TongDoanhThu_Fragment());
-
-            initToolBar(s[3]);
-            view.getMenu().findItem(R.id.menu_nav_qlTK).setChecked(false);
-            view.getMenu().findItem(R.id.menu_nav_tLDA).setChecked(false);
-            view.getMenu().findItem(R.id.menu_nav_tDA).setChecked(false);
-            view.getMenu().findItem(R.id.menu_nav_tongDoanhThu).setChecked(true);
-            view.getMenu().findItem(R.id.menu_nav_topMABC).setChecked(false);
-            view.getMenu().findItem(R.id.menu_nav_dSHD).setChecked(false);
-            view.getMenu().findItem(R.id.menu_nav_dangXuat).setChecked(false);
-        } else if (item.getItemId() == R.id.menu_nav_topMABC) {
+        }
+//        else if (item.getItemId() == R.id.menu_nav_tongDoanhThu) {
+//            replaceFragment(new TongDoanhThu_Fragment());
+//
+//            initToolBar(s[3]);
+//            view.getMenu().findItem(R.id.menu_nav_qlTK).setChecked(false);
+//            view.getMenu().findItem(R.id.menu_nav_tLDA).setChecked(false);
+//            view.getMenu().findItem(R.id.menu_nav_tDA).setChecked(false);
+////            view.getMenu().findItem(R.id.menu_nav_tongDoanhThu).setChecked(true);
+//            view.getMenu().findItem(R.id.menu_nav_topMABC).setChecked(false);
+//            view.getMenu().findItem(R.id.menu_nav_dSHD).setChecked(false);
+//            view.getMenu().findItem(R.id.menu_nav_dangXuat).setChecked(false);
+//        }
+        else if (item.getItemId() == R.id.menu_nav_topMABC) {
             replaceFragment(new Top5MonAn_Fragment());
 
             initToolBar(s[4]);
             view.getMenu().findItem(R.id.menu_nav_qlTK).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_tLDA).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_tDA).setChecked(false);
-            view.getMenu().findItem(R.id.menu_nav_tongDoanhThu).setChecked(false);
+//            view.getMenu().findItem(R.id.menu_nav_tongDoanhThu).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_topMABC).setChecked(true);
             view.getMenu().findItem(R.id.menu_nav_dSHD).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_dangXuat).setChecked(false);
@@ -122,7 +124,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             view.getMenu().findItem(R.id.menu_nav_qlTK).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_tLDA).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_tDA).setChecked(false);
-            view.getMenu().findItem(R.id.menu_nav_tongDoanhThu).setChecked(false);
+//            view.getMenu().findItem(R.id.menu_nav_tongDoanhThu).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_topMABC).setChecked(false);
             view.getMenu().findItem(R.id.menu_nav_dSHD).setChecked(true);
             view.getMenu().findItem(R.id.menu_nav_dangXuat).setChecked(false);

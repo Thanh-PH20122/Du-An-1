@@ -23,10 +23,10 @@
 
     <item android:title="Thống kê">
         <menu>
-            <item
-                android:id="@+id/menu_nav_tongDoanhThu"
-                android:icon="@drawable/ic_baseline_monetization_on_24"
-                android:title="Tổng doanh thu"/>
+<!--            <item-->
+<!--                android:id="@+id/menu_nav_tongDoanhThu"-->
+<!--                android:icon="@drawable/ic_baseline_monetization_on_24"-->
+<!--                android:title="Tổng doanh thu"/>-->
             <item
                 android:id="@+id/menu_nav_topMABC"
                 android:icon="@drawable/ic_baseline_monetization_on_24"
