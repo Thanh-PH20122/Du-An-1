@@ -70,6 +70,7 @@ public class ThanhVienDao {
                 stmtInsert.execute();
 
                 Log.d("zzzzz", "insertRow: finish insert");
+                Toast.makeText(context, "Thêm thành công", Toast.LENGTH_SHORT).show();
                 // lấy ra ID cột tự động tăng
                 ResultSet rs = stmtInsert.getGeneratedKeys();
 
@@ -79,6 +80,7 @@ public class ThanhVienDao {
 
         } catch (Exception e) {
             Log.e("zzzzzzzzzz", "insertRow: Có lỗi thêm dữ liệu " );
+            Toast.makeText(context, "Thêm thất bại", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
@@ -92,13 +94,13 @@ public class ThanhVienDao {
                         "SET userName= '" + obj.getUserName() + "'," +
                         "passWord= '" + obj.getPassWord() + "'," +
                         "tenNguoiDung= '" + obj.getTenNguoiDung() + "'," +
-                        "idQTV= '" + obj.getIdQTV() + "'," +
-                        " WHERE id = " + obj.getIdTV();
+                        "idQTV= '" + obj.getIdQTV() + "'" +
+                        " WHERE idTV = " + obj.getIdTV();
 
 
                 PreparedStatement stmt = this.connection.prepareStatement(sqlUpdate);
                 stmt.execute(); // thực thi câu lệnh SQL
-
+                Toast.makeText(context, "Sửa thành công", Toast.LENGTH_SHORT).show();
                 Log.d("zzzzz", "updateRow: finish Update");
 
 
@@ -107,6 +109,7 @@ public class ThanhVienDao {
 
         } catch (Exception e) {
             Log.e("zzzzzzzzzz", "updateRow: Có lỗi sửa dữ liệu " );
+            Toast.makeText(context, "Sửa thất bại", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
