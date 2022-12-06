@@ -40,15 +40,29 @@
                     android:text="Tên món ăn:"
                     android:textColor="@color/black"
                     android:textSize="20dp" />
-
-                <TextView
-                    android:id="@+id/item_yeu_thich_gia"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Giá:"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/holo_red_light"
-                    android:textSize="20dp" />
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    >
+                    <TextView
+                        android:id="@+id/item_yeu_thich_gia"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Giá:"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="20dp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" đ"
+                        android:textAlignment="center"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="20dp" />
+                </LinearLayout>
+
 
             </LinearLayout>
 
