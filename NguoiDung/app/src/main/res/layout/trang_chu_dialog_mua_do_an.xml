@@ -42,14 +42,25 @@
                         android:layout_height="wrap_content"
                         android:text="Tên món ăn"
                         android:textColor="@color/black" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:id="@+id/trang_chu_dialog_mua_do_an_gia_mon_an"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text="Giá món ăn"
+                            android:textColor="@android:color/holo_red_light" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:text=" đ"
+                            android:textColor="@android:color/holo_red_light" />
+                    </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/trang_chu_dialog_mua_do_an_gia_mon_an"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="20dp"
-                        android:text="Giá món ăn"
-                        android:textColor="@android:color/holo_red_light" />
                 </LinearLayout>
 
             </LinearLayout>
